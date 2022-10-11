@@ -1,6 +1,6 @@
 export type CreateUserRequest = {
   login: string,
-  pass: string,
+  password: string,
 
   name: string,
   surname: string

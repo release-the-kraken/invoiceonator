@@ -3,10 +3,14 @@
   border: none;
   box-shadow: none;
 }
-.submit-button{
+button{
   width:100%;
+  border: 1px solid black;
+}
+.submit-button{
   background-color: black;
   color: white;
+  margin-bottom: 0.5rem;
 }
 mat-form-field{
   width:100%;

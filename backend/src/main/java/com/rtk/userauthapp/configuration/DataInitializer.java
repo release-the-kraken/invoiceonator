@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class DataInitializer {
     private final InitialUsersConfiguration initialUsersConfiguration;
-
     private final ApplicationUserRoleRepository applicationUserRoleRepository;
     private final ApplicationUserRepository applicationUserRepository;
 

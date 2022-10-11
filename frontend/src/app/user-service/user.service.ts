@@ -13,7 +13,7 @@ export class UserService {
   public getDefaultUserRequest(): CreateUserRequest {
     return {
       login: "",
-      pass: "",
+      password: "",
       name: "",
       surname: ""
     }

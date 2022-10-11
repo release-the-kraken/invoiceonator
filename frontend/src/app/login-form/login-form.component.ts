@@ -3,6 +3,8 @@ import {AuthenticationRequest} from "../model/user";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthenticationService} from "../authentication-service/authentication.service";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {UserFormComponent} from "../user-form/user-form.component";
 
 
 
@@ -24,20 +26,20 @@ export class LoginFormComponent implements OnInit {
     protected authService: AuthenticationService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
   }
-
+  openDialog() {
+    this.dialog.open(UserFormComponent);
+  }
   login(): void {
     this.authService.authenticate(this.authenticationRequest);
   }
 
-  clearForm(): void {
-    this.authenticationRequest = {
-      login: '',
-      password: ''
-    }
+  addUser() {
+
   }
 }

@@ -1,0 +1,58 @@
+
+<mat-card class="main-mat-card">
+  <mat-card-content class="container-fluid">
+    <div class="input-container">
+      <mat-label>Username:</mat-label>
+      <mat-form-field appearance="outline">
+        <input
+          type="text"
+          matInput
+          placeholder="username"
+          [(ngModel)]="userRequest.login"
+        />
+      </mat-form-field>
+      <mat-label>Password:</mat-label>
+      <mat-form-field appearance="outline">
+        <input
+          type="password"
+          matInput
+          placeholder="password"
+          [(ngModel)]="userRequest.password"
+        />
+      </mat-form-field>
+      <mat-label>First Name:</mat-label>
+      <mat-form-field appearance="outline">
+        <input
+          type="text"
+          matInput
+          placeholder="first name"
+          [(ngModel)]="userRequest.name"
+        />
+      </mat-form-field>
+      <mat-label>Last Name:</mat-label>
+      <mat-form-field appearance="outline">
+        <input
+          type="text"
+          matInput
+          placeholder="last name"
+          [(ngModel)]="userRequest.surname"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form-button-row">
+      <button
+        type="submit"
+        class="submit-button"
+        mat-flat-button
+        mat-dialog-close=""
+        color="primary"
+        [disabled]="!(userRequest.login && userRequest.password)"
+        (click)="addUser()"
+      >
+        Submit
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+

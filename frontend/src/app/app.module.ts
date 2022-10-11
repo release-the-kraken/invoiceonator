@@ -19,12 +19,15 @@ import {AuthenticationGuard} from "./authentication-service/authentication.guard
 import {AuthenticationService} from "./authentication-service/authentication.service";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatDialogModule} from "@angular/material/dialog";
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
-    TestComponent
+    TestComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     MatSnackBarModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule
   ],
   providers: [
     UserService,

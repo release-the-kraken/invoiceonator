@@ -1,0 +1,19 @@
+mat-form-field{
+  width:100%;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-mat-card{
+  box-shadow: none !important;
+}
+mat-label:first-child{
+  margin-top: 1rem;
+}
+
+.submit-button {
+width: 100%;
+  background-color: black;
+}
