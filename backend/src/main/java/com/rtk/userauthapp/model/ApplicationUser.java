@@ -41,4 +41,16 @@ public class ApplicationUser implements UserDetails {
     @EqualsAndHashCode.Exclude
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<ApplicationUserRole> roles;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "appUser")
+    private Set<Company> companies;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "appUser")
+    private Set<Invoice> invoices;
+
+
 }

@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: 1234
-    url: jdbc:mysql://localhost/user_auth_template_app?serverTimezone=Europe/Warsaw&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost/invoce-o-matic?serverTimezone=Europe/Warsaw&createDatabaseIfNotExist=true
   jpa:
     hibernate:
       ddl-auto: update
