@@ -14,22 +14,22 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping(path = "/api/user")
+@CrossOrigin()
 @RequiredArgsConstructor
 public class ApplicationUserController {
     private final ApplicationUserService applicationUserService;
 
     @GetMapping()
-    @CrossOrigin()
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN') && hasRole('MODERATOR')")
-    public List<ApplicationUserDTO> getListOfUsers(){
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<ApplicationUserDTO> getListOfUsers() {
         return applicationUserService.listUsers();
     }
 
     @PostMapping()
-    @CrossOrigin()
     @ResponseStatus(HttpStatus.CREATED)
-    public ApplicationUserDTO postNewUser(@RequestBody CreateUserRequest request){
+    @PreAuthorize("hasRole('ADMIN')")
+    public ApplicationUserDTO postNewUser(@RequestBody CreateUserRequest request) {
         return applicationUserService.addUser(request);
     }
 }
