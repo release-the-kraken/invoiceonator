@@ -1,0 +1,7 @@
+.add-button-row {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.main-mat-card{
+  box-shadow: none;
+}

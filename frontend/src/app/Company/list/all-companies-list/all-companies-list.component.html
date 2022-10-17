@@ -1,0 +1,7 @@
+<app-list-container
+[hiddenColumnNames]="getHiddenColumnNames()"
+[companies]="pageResponse.content"
+[totalElements]="pageResponse.totalElements"
+(loadCompaniesEvent)="loadPage($event)"
+>
+</app-list-container>

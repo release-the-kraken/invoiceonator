@@ -1,0 +1,7 @@
+<app-invoice-list-container
+  [hiddenColumnNames]="getHiddenColumnNames()"
+  [invoices]="pageResponse.content"
+  [totalElements]="pageResponse.totalElements"
+  (loadInvoicesEvent)="loadPage($event)"
+>
+</app-invoice-list-container>

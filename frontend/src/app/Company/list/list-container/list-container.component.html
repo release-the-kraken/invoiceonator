@@ -1,0 +1,42 @@
+<mat-card class="main-mat-card">
+  <mat-card-content class="sales-list-content">
+    <table mat-table [dataSource]="companies" class="col-12 companies-table">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Company Name</th>
+        <td mat-cell *matCellDef="let company">{{company.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="countryOfOrigin">
+        <th mat-header-cell *matHeaderCellDef>Country</th>
+        <td mat-cell *matCellDef="let company">{{company.countryOfOrigin}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="industry">
+        <th mat-header-cell *matHeaderCellDef>Industry</th>
+        <td mat-cell *matCellDef="let company">{{company.industry}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="userFullName">
+        <th mat-header-cell *matHeaderCellDef>Handled by</th>
+        <td mat-cell *matCellDef="let company">{{company.userFullName}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="getVisibleColumnNames()"></tr>
+      <tr mat-row *matRowDef="let row; columns: getVisibleColumnNames()"></tr>
+    </table>
+    <mat-paginator
+      class=""
+      [pageSizeOptions]="[ 3, 6, 9]"
+      showFirstLastButtons
+      aria-label="Select page of Products"
+      [length]="totalElements"
+      (page)="loadCompanies($event)">
+    </mat-paginator>
+  </mat-card-content>
+  <div *ngIf="!authService.hasRole('ApplicationUserRole(id=1, name=ROLE_ADMIN)')" class="add-button-row">
+    <button class="add-user-button" type="submit" mat-flat-button color="primary" (click)="openDialog()">
+      Add new company
+    </button>
+  </div>
+</mat-card>
