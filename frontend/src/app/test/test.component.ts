@@ -22,14 +22,14 @@ export class TestComponent implements OnInit {
   call(type: string) {
     this.httpClient.get("http://localhost:8080/api/test/" + type)
       .subscribe({
-        next: (data) => {
+        next: () => {
           this.snackBar.open(`${type} request succeeded`, undefined, {
             verticalPosition: 'top',
             horizontalPosition: 'end',
             duration: 1500
           })
         },
-        error: (error) => {
+        error: () => {
           this.snackBar.open(`${type} request FAILED`, undefined, {
             verticalPosition: 'bottom',
             horizontalPosition: 'end',
@@ -46,7 +46,7 @@ export class TestComponent implements OnInit {
 
   callAnyone() {
     console.log("Call Anyone")
-    this.call("any user");
+    this.call("anyone");
   }
 
   callModerator() {

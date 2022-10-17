@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {LOCAL_STORAGE_AUTH_TOKEN, LOCAL_STORAGE_AUTH_USER} from "../model/constants";
 import {AuthenticationRequest, UserDTO} from "../model/user";
 import {HttpClient} from "@angular/common/http";
@@ -10,8 +10,6 @@ import {Router} from "@angular/router";
 export class AuthenticationService {
   authorizationHeader: string | null = null;
   loggedInUser: UserDTO | null = null;
-
-  loggingIn: boolean = false;
 
   constructor(
     private httpClient: HttpClient,
@@ -28,7 +26,6 @@ export class AuthenticationService {
   }
 
   authenticate(request: AuthenticationRequest): void {
-    this.loggingIn = true;
 
     this.httpClient.post<UserDTO>("http://localhost:8080/login", request,
       {
@@ -38,9 +35,7 @@ export class AuthenticationService {
       .subscribe({
         next: (data) => {
           console.log("Success logging in!")
-          const authorizationHeader = data.headers.get('Authorization');
-          // Bearer:tokenik_tokenik_tokenik
-          this.authorizationHeader = authorizationHeader;
+          this.authorizationHeader = data.headers.get('Authorization');
           this.loggedInUser = data.body;
 
           localStorage.setItem(LOCAL_STORAGE_AUTH_TOKEN, this.authorizationHeader!)
@@ -48,8 +43,7 @@ export class AuthenticationService {
 
           console.log(this.loggedInUser)
 
-          this.loggingIn = false;
-          this.router.navigate(['/test'])
+            this.router.navigate(['/user-panel'])
         },
         error: (error) => {
           console.log('Error logging in: ')
@@ -59,14 +53,12 @@ export class AuthenticationService {
 
           localStorage.removeItem(LOCAL_STORAGE_AUTH_TOKEN)
           localStorage.removeItem(LOCAL_STORAGE_AUTH_USER)
-
-          this.loggingIn = false;
         }
       })
   }
 
 
-  // // // // HELPERS
+  // <----------------->HELPERS------------------->
 
   hasRole(role: string): boolean {
     return this.loggedInUser != null && this.loggedInUser.roles.includes(role)

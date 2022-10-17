@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../user-service/user.service";
-import Utils from "../utils";
-import {Router} from "@angular/router";
-import {CreateUserRequest} from "../model/user";
-import {MatDialog} from "@angular/material/dialog";
+import Utils from "../../utils";
+import {CreateUserRequest} from "../../model/user";
 
 @Component({
   selector: 'app-user-form',
@@ -13,8 +11,7 @@ import {MatDialog} from "@angular/material/dialog";
 export class UserFormComponent implements OnInit {
   userRequest : CreateUserRequest;
   constructor(private userService: UserService,
-              private utils: Utils,
-              private dialog: MatDialog) {
+              private utils: Utils) {
     this.userRequest = userService.getDefaultUserRequest();
   }
 
@@ -26,8 +23,9 @@ export class UserFormComponent implements OnInit {
       .subscribe({
         next: () => {
           this.utils.getSnackBar('Successfully added user.');
+          this.userService.getAll(0, 3);
         },
-        error: (e)=>{
+        error: ()=>{
           this.utils.getSnackBar('Failed to add user. Username or password already taken.');
         }
       })

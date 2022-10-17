@@ -5,11 +5,12 @@ import com.rtk.userauthapp.model.dto.CreateUserRequest;
 import com.rtk.userauthapp.service.ApplicationUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -19,11 +20,12 @@ import java.util.List;
 public class ApplicationUserController {
     private final ApplicationUserService applicationUserService;
 
-    @GetMapping()
+    @GetMapping(params ={"page", "size"})
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN')")
-    public List<ApplicationUserDTO> getListOfUsers() {
-        return applicationUserService.listUsers();
+    public Page<ApplicationUserDTO> getListOfUsers(Pageable pageable) {
+
+        return applicationUserService.listUsers(PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
     }
 
     @PostMapping()

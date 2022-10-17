@@ -23,14 +23,14 @@ public class InvoiceController {
     @GetMapping(params ={"page", "size"})
     @PreAuthorize("hasRole('ADMIN')")
     public Page<InvoiceDTO> listAll(Pageable pageable){
-        log.info("Fetching list of all companies.");
+        log.info("Fetching list of all invoices.");
         return invoiceService.findAll(PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
     }
 
     @GetMapping(value="/{userId}", params ={"page", "size"})
     @PreAuthorize("isAuthenticated()")
     public Page<InvoiceDTO> listAllForUser(@PathVariable long userId, Pageable pageable){
-        log.info("Fetching list of all companies.");
+        log.info("Fetching list of all invoices.");
         return invoiceService.findAllByAppUser(userId, PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
     }
 

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class CompanyController {
     private final CompanyService companyService;
 
-    @GetMapping(params ={"page", "size"})
+    @GetMapping(params ={"page", "size"})//todo - remove params
     @PreAuthorize("hasRole('ADMIN')")
     public Page<CompanyDTO> listAll(Pageable pageable){
         log.info("Fetching list of all companies.");

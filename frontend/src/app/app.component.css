@@ -1,1 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Coda&display=swap');
+*{
+  transition: all 0.3s ease-in-out;
+}
+
+.header-row{
+  background-color: var(--background-primary);
+  box-shadow: 0 2px 6px darkslategray;
+}
+.header-right-container{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.nav-buttons-container{
+  border: none;
+}
+
+.mat-button-toggle{
+  background-color: transparent;
+  border: none !important;
+  color: var(--light-font-color);
+  font-size: 1rem;
+  padding: 0 1rem;
+}
+.mat-button-toggle:hover{
+  background-color: var(--background-secondary);
+}
+.mat-button-toggle-checked{
+  background-color: var(--background-secondary);
+}
+
+.app-sidebar h1 {
+  margin-top: 15px;
+  margin-left: 15px;
+  font-size: 2.5em;
+  color: var(--dark-font-color);
+}
+
+
+.logo {
+  font-family: 'Coda', 'Courier New', Verdana, Arial, sans-serif;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.8em;
+
+}
+
+.logo span {
+  line-height: 3rem;
+  padding: 0 1rem;
+  color: var(--light-font-color);
+}
+
+.app-main {
+  padding-top: 1rem;
+
+}
+.log-out-button{
+  color: var(--light-font-color);
+  border-color: var(--light-font-color);
+}
 

@@ -1,2 +1,41 @@
-<router-outlet></router-outlet>
+<div class="app-container container-fluid">
+  <header class="row header-row">
+    <div class="col-3 logo"><span>invoice-O-matic</span></div>
+    <div class="col-9 header-right-container">
+      <button *ngIf="authService.isLoggedIn()" mat-stroked-button class="log-out-button" (click)="authService.logout()">
+        Log out
+      </button>
+    </div>
 
+    <nav class="row col-12" *ngIf="authService.isLoggedIn()">
+        <mat-button-toggle-group class="offset-2 nav-buttons-container" name="nav-buttons">
+      <ng-template [ngIf]="!authService.hasRole('ApplicationUserRole(id=1, name=ROLE_ADMIN)')">
+          <mat-button-toggle class="nav-bar-button" value="companies" [routerLink]="['user-companies']">Companies
+          </mat-button-toggle>
+      </ng-template>
+      <ng-template [ngIf]="!authService.hasRole('ApplicationUserRole(id=1, name=ROLE_ADMIN)')">
+        <mat-button-toggle class="nav-bar-button" value="invoices" [routerLink]="['user-invoices']">Invoices
+        </mat-button-toggle>
+      </ng-template>
+      <ng-template [ngIf]="authService.hasRole('ApplicationUserRole(id=1, name=ROLE_ADMIN)')">
+        <mat-button-toggle class="nav-bar-button" value="companies" [routerLink]="['all-companies']">Companies
+        </mat-button-toggle>
+      </ng-template>
+      <ng-template [ngIf]="authService.hasRole('ApplicationUserRole(id=1, name=ROLE_ADMIN)')">
+        <mat-button-toggle class="nav-bar-button" value="invoices" [routerLink]="['all-invoices']">Invoices
+        </mat-button-toggle>
+      </ng-template>
+      <ng-template [ngIf]="authService.hasRole('ApplicationUserRole(id=1, name=ROLE_ADMIN)')">
+        <mat-button-toggle class="nav-bar-button" value="users" [routerLink]="['users']">Users</mat-button-toggle>
+      </ng-template>
+      </mat-button-toggle-group>
+    </nav>
+  </header>
+
+  <div class="row">
+    <main class="col-10 offset-1 app-main">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+</div>
